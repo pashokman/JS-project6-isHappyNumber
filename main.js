@@ -13,24 +13,17 @@ const sumOfSquareDigits = (number) => {
 
 let count = 0;
 
-const counter = () => {
-    count++;
-}
+const counter = () => count++;
 
 const isHappyNumber = (number) => {
-    if (number !== 0) {
-        if (sumOfSquareDigits(number) === 1) {
-            return true;
-        } else {
-            if (count < 10) {
-                return isHappyNumber(sumOfSquareDigits(number));
-            } else {
-                return false;
-            }            
-        }
-    } else {
-        return 'add another number';
-    }
+    if (number === 0) return false;
+    if (sumOfSquareDigits(number) === 1) return true;
+    if (count < 10) return isHappyNumber(sumOfSquareDigits(number));
+    return false;
 }
 
-console.log(isHappyNumber(13));
+console.log(isHappyNumber(0));  //false
+console.log(isHappyNumber(13)); //true
+console.log(isHappyNumber(19)); //true
+console.log(isHappyNumber(15)); //false
+console.log(isHappyNumber(8));  //false
